@@ -64,17 +64,17 @@
 	})
 
 	$(document).on("click", ".update-dataMahasiswa", function() {
-		var id = $(this).attr("data-id");
-		
+		var NIM = $(this).attr("data-id");
 		$.ajax({
 			method: "POST",
 			url: "<?php echo base_url('Mahasiswa/update'); ?>",
-			data: "id=" +id
+			data: `NIM=${NIM}`
 		})
 		.done(function(data) {
 			$('#tempat-modal').html(data);
 			$('#update-mahasiswa').modal('show');
 		})
+		.fail((xhr) => console.log(xhr.responseText))
 	})
 
 	$('#form-tambah-mahasiswa').submit(function(e) {
@@ -99,13 +99,14 @@
 				effect_msg();
 			}
 		})
+		.fail((xhr, textStatus, errorTh) => console.log(xhr.responseText))
 		
 		e.preventDefault();
 	});
 
 	$(document).on('submit', '#form-update-mahasiswa', function(e){
 		var data = $(this).serialize();
-
+		console.log(data)
 		$.ajax({
 			method: 'POST',
 			url: '<?php echo base_url('Mahasiswa/prosesUpdate'); ?>',

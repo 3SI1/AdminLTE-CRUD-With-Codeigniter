@@ -30,7 +30,9 @@ class Mahasiswa extends AUTH_Controller {
 	}
 
 	public function prosesTambah() {
+		$this->form_validation->set_rules('NIM', 'NIM', 'trim|required');
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('telp', 'Telepon', 'trim|required');
 		$this->form_validation->set_rules('kota', 'Kota', 'trim|required');
 		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'trim|required');
 		$this->form_validation->set_rules('jurusan', 'Jurusan', 'trim|required');
@@ -52,17 +54,18 @@ class Mahasiswa extends AUTH_Controller {
 		}
 
 		echo json_encode($out);
+		
 	}
 
 	public function update() {
-		$id = trim($_POST['id']);
-
-		$data['dataMahasiswa'] = $this->M_mahasiswa->select_by_id($id);
+		$NIM = trim($_POST['NIM']);
+		$data['dataMahasiswa'] = $this->M_mahasiswa->select_by_id($NIM);
 		$data['dataJurusan'] = $this->M_jurusan->select_all();
 		$data['dataKota'] = $this->M_kota->select_all();
 		$data['userdata'] = $this->userdata;
 
-		echo show_my_modal('modals/modal_update_mahasiswa', 'update-Mahasiswa', $data);
+		echo show_my_modal('modals/modal_update_mahasiswa', 'update-mahasiswa', $data);
+		
 	}
 
 	public function prosesUpdate() {

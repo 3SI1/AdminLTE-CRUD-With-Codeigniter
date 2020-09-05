@@ -8,6 +8,12 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-user"></i>
       </span>
+      <input type="text" class="form-control" placeholder="NIM" name="NIM" aria-describedby="sizing-addon2">
+    </div>
+    <div class="input-group form-group">
+      <span class="input-group-addon" id="sizing-addon2">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
       <input type="text" class="form-control" placeholder="Nama" name="nama" aria-describedby="sizing-addon2">
     </div>
     <div class="input-group form-group">
@@ -20,7 +26,7 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-home"></i>
       </span>
-      <select name="kota" class="form-control select2" aria-describedby="sizing-addon2">
+      <select name="kota" class="form-control select2" aria-describedby="sizing-addon2" style="width: 100%">
         <?php
         foreach ($dataKota as $kota) {
           ?>
@@ -38,10 +44,10 @@
       </span>
       <span class="input-group-addon">
           <input type="radio" name="jk" value="1" id="laki" class="minimal">
-      <label for="laki">Laki-laki</label>
-        </span>
-        <span class="input-group-addon">
-          <input type="radio" name="jk" value="2" id="perempuan" class="minimal"> 
+          <label for="laki">Laki-laki</label>
+      </span>
+      <span class="input-group-addon">
+        <input type="radio" name="jk" value="2" id="perempuan" class="minimal"> 
       <label for="perempuan">Perempuan</label>
         </span>
     </div>

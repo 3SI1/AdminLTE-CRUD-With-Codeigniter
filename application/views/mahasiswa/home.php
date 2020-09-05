@@ -19,11 +19,12 @@
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>NIM</th>
           <th>Nama</th>
           <th>No Telp</th>
-          <th>Asal kota</th>
-          <th>Jenis Kelamin</th>
-          <th>Posisi</th>
+          <th>Asal</th>
+          <th>JK</th>
+          <th>Jurusan</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

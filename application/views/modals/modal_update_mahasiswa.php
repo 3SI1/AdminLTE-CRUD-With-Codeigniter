@@ -3,12 +3,12 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h3 style="display:block; text-align:center;">Update Data Mahasiswa</h3>
       <form method="POST" id="form-update-mahasiswa">
-        <input type="hidden" name="id" value="<?php echo $dataMahasiswa->id_mahasiswa; ?>">
+        <input type="hidden" name="NIM" value="<?php echo $dataMahasiswa->NIM; ?>">
         <div class="input-group form-group">
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-user"></i>
           </span>
-          <input type="text" class="form-control" placeholder="Nama" name="nama" aria-describedby="sizing-addon2" value="<?php echo $dataMahasiswa->nama_mahasiswa; ?>">
+          <input type="text" class="form-control" placeholder="Nama" name="nama" aria-describedby="sizing-addon2" value="<?php echo $dataMahasiswa->nama; ?>">
         </div>
         <div class="input-group form-group">
           <span class="input-group-addon" id="sizing-addon2">
@@ -20,7 +20,7 @@
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-home"></i>
           </span>
-          <select name="kota" class="form-control select2"  aria-describedby="sizing-addon2">
+          <select name="kota" class="form-control select2"  aria-describedby="sizing-addon2" style="width: 100%">
             <?php
             foreach ($dataKota as $kota) {
               ?>
@@ -47,7 +47,7 @@
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-briefcase"></i>
           </span>
-          <select name="jurusan" class="form-control select2"  aria-describedby="sizing-addon2">
+          <select name="jurusan" class="form-control select2"  aria-describedby="sizing-addon2" style="width: 100%">
             <?php
             foreach ($dataJurusan as $jurusan) {
               ?>

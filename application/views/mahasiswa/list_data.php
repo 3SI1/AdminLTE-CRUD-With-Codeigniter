@@ -3,6 +3,7 @@
     ?>
     <tr>
       <?php  echo "Test" ?>
+      <td><?php echo $mahasiswa->NIM; ?></td>
       <td style="min-width:230px;"><?php echo $mahasiswa->nama; ?></td>
       <td><?php echo $mahasiswa->telp; ?></td>
       <td><?php echo $mahasiswa->kota; ?></td>

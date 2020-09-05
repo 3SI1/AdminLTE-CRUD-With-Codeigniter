@@ -35,11 +35,11 @@ class M_mahasiswa extends CI_Model
 	public function select_by_id($NIM)
 	{
 		$sql = "SELECT 
-					mahasiswa.NIM AS nim_mahasiswa, 
-					mahasiswa.nama AS nama_mahasiswa, 
-					mahasiswa.id_kota AS kota, 
-					mahasiswa.id_kelamin AS kelamin, 
-					mahasiswa.id_jurusan AS jurusan, 
+					mahasiswa.NIM AS NIM, 
+					mahasiswa.nama AS nama, 
+					mahasiswa.id_kota, 
+					mahasiswa.id_kelamin, 
+					mahasiswa.id_jurusan, 
 					mahasiswa.telp AS telp, 
 					kota.nama AS kota, 
 					kelamin.nama AS kelamin, 
@@ -100,8 +100,14 @@ class M_mahasiswa extends CI_Model
 
 	public function insert($data)
 	{
-		$sql = "INSERT INTO MAHASISWA (NIM, nama, id_kelamin, id_jurusan, id_kota, telp)
-				VALUES('{$data['NIM']}','{$data['nama']}',{$data['jk']},{$data['jurusan']},{$data['kota']},'{$data['telp']}'";
+		$sql = "INSERT INTO MAHASISWA (NIM, nama, telp, id_kelamin, id_jurusan, id_kota)
+				VALUES	(
+					'{$data['NIM']}',
+					'{$data['nama']}',
+					'{$data['telp']}',
+					{$data['jk']},
+					{$data['jurusan']},
+					{$data['kota']})";
 
 		$this->db->query($sql);
 
