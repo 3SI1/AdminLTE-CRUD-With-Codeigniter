@@ -12,15 +12,15 @@
             <th>Posisi</th>
           </tr>
         </thead>
-        <tbody id="data-pegawai">
+        <tbody id="data-mahasiswa">
           <?php
-            foreach ($dataKota as $pegawai) {
+            foreach ($dataKota as $mahasiswa) {
               ?>
               <tr>
-                <td style="min-width:230px;"><?php echo $pegawai->pegawai; ?></td>
-                <td><?php echo $pegawai->telp; ?></td>
-                <td><?php echo $pegawai->kelamin; ?></td>
-                <td><?php echo $pegawai->posisi; ?></td>
+                <td style="min-width:230px;"><?php echo $mahasiswa->nama; ?></td>
+                <td><?php echo $mahasiswa->telp; ?></td>
+                <td><?php echo $mahasiswa->kelamin; ?></td>
+                <td><?php echo $mahasiswa->jurusan; ?></td>
               </tr>
               <?php
             }

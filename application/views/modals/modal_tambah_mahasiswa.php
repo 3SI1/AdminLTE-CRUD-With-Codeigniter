@@ -1,9 +1,9 @@
 <div class="col-md-offset-1 col-md-10 col-md-offset-1 well">
   <div class="form-msg"></div>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <h3 style="display:block; text-align:center;">Tambah Data Pegawai</h3>
+  <h3 style="display:block; text-align:center;">Tambah Data Mahasiswa</h3>
 
-  <form id="form-tambah-pegawai" method="POST">
+  <form id="form-tambah-mahasiswa" method="POST">
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-user"></i>
@@ -49,12 +49,12 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-briefcase"></i>
       </span>
-      <select name="posisi" class="form-control select2"  aria-describedby="sizing-addon2" style="width: 100%">
+      <select name="jurusan" class="form-control select2"  aria-describedby="sizing-addon2" style="width: 100%">
         <?php
-        foreach ($dataPosisi as $posisi) {
+        foreach ($dataJurusan as $jurusan) {
           ?>
-          <option value="<?php echo $posisi->id; ?>">
-            <?php echo $posisi->nama; ?>
+          <option value="<?php echo $jurusan->id; ?>">
+            <?php echo $jurusan->nama; ?>
           </option>
           <?php
         }

@@ -21,8 +21,8 @@ class M_kota extends CI_Model {
 
 	public function select_by_mahasiswa($id) {
 		$sql = "SELECT 
-					mahasiswa.NIM AS nim, 
-					mahasiswa.nama AS mahasiswa, 
+					mahasiswa.NIM AS NIM, 
+					mahasiswa.nama AS nama, 
 					mahasiswa.telp AS telp, 
 					kota.nama AS kota, 
 					kelamin.nama AS kelamin, 
