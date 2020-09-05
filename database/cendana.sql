@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24 Feb 2017 pada 15.57
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: Sep 05, 2020 at 09:27 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,13 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `cendana`
 --
+CREATE DATABASE IF NOT EXISTS `cendana` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cendana`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(15) DEFAULT NULL,
@@ -35,7 +39,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
@@ -45,16 +49,38 @@ INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelamin`
+-- Table structure for table `jurusan`
 --
 
+DROP TABLE IF EXISTS `jurusan`;
+CREATE TABLE `jurusan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jurusan`
+--
+
+INSERT INTO `jurusan` (`id`, `nama`) VALUES
+(1, 'DIV STATISTIKA'),
+(2, 'DIII STATISTIKA'),
+(3, 'DIV KOMPUTASI STATISTIK');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelamin`
+--
+
+DROP TABLE IF EXISTS `kelamin`;
 CREATE TABLE `kelamin` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kelamin`
+-- Dumping data for table `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -64,16 +90,17 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
+DROP TABLE IF EXISTS `kota`;
 CREATE TABLE `kota` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id`, `nama`) VALUES
@@ -87,57 +114,27 @@ INSERT INTO `kota` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `mahasiswa`
 --
 
-CREATE TABLE `pegawai` (
-  `id` varchar(255) NOT NULL,
-  `nama` varchar(255) DEFAULT NULL,
-  `telp` varchar(255) DEFAULT NULL,
-  `id_kota` int(11) DEFAULT NULL,
-  `id_kelamin` int(1) DEFAULT NULL,
-  `id_posisi` int(11) DEFAULT NULL,
-  `status` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `mahasiswa`;
+CREATE TABLE `mahasiswa` (
+  `NIM` varchar(12) NOT NULL,
+  `nama` varchar(64) NOT NULL,
+  `telp` varchar(20) NOT NULL,
+  `id_kelamin` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `id_kota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pegawai`
+-- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `pegawai` (`id`, `nama`, `telp`, `id_kota`, `id_kelamin`, `id_posisi`, `status`) VALUES
-('10', 'Antony Febriansyah Hartono', '082199568540', 1, 1, 1, 1),
-('11', 'Hafizh Asrofil Al Banna', '087859615271', 1, 1, 1, 1),
-('12', 'Faiq Fajrullah', '085736333728', 1, 1, 2, 1),
-('3', 'Mustofa Halim', '081330493322', 1, 1, 3, 1),
-('4', 'Dody Ahmad Kusuma Jaya', '083854520015', 1, 1, 2, 1),
-('5', 'Mokhammad Choirul Ikhsan', '085749535400', 3, 1, 2, 1),
-('7', 'Achmad Chadil Auwfar', '08984119934', 2, 1, 1, 1),
-('8', 'Rizal Ferdian', '087777284179', 1, 1, 3, 1),
-('9', 'Redika Angga Pratama', '083834657395', 1, 1, 3, 1),
-('1', 'Tolkha Hasan', '081233072122', 1, 1, 4, 1),
-('2', 'Wawan Dwi Prasetyo', '085745966707', 4, 1, 4, 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `posisi`
---
-
-CREATE TABLE `posisi` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `posisi`
---
-
-INSERT INTO `posisi` (`id`, `nama`) VALUES
-(1, 'IT'),
-(2, 'HRD'),
-(3, 'Keuangan'),
-(4, 'Produk'),
-(5, 'Web Developer');
+INSERT INTO `mahasiswa` (`NIM`, `nama`, `telp`, `id_kelamin`, `id_jurusan`, `id_kota`) VALUES
+('222110001', 'Hamdani Yuda Irawan', '02818555577', 1, 2, 1),
+('222110002', 'Darma Suharto Atmadjaja', '62899555877', 1, 1, 3),
+('222110003', 'Sari Nirmala Johan', '0897555500', 2, 3, 4);
 
 --
 -- Indexes for dumped tables
@@ -147,6 +144,12 @@ INSERT INTO `posisi` (`id`, `nama`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jurusan`
+--
+ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -162,10 +165,13 @@ ALTER TABLE `kota`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `posisi`
+-- Indexes for table `mahasiswa`
 --
-ALTER TABLE `posisi`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`NIM`),
+  ADD KEY `id_kelamin` (`id_kelamin`),
+  ADD KEY `id_jurusan` (`id_jurusan`),
+  ADD KEY `id_kota` (`id_kota`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -176,16 +182,32 @@ ALTER TABLE `posisi`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
--- AUTO_INCREMENT for table `posisi`
+-- Constraints for dumped tables
 --
-ALTER TABLE `posisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_kelamin`) REFERENCES `kelamin` (`id`),
+  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id`),
+  ADD CONSTRAINT `mahasiswa_ibfk_3` FOREIGN KEY (`id_kota`) REFERENCES `kota` (`id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

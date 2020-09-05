@@ -9,8 +9,8 @@
 		});
 
 	window.onload = function() {
-		tampilPegawai();
-		tampilPosisi();
+		tampilMahasiswa();
+		tampilJurusan();
 		tampilKota();
 		<?php
 			if ($this->session->flashdata('msg') != '') {
@@ -35,66 +35,66 @@
 		setTimeout(function() { $('.msg').fadeOut(1000); }, 3000);
 	}
 
-	function tampilPegawai() {
-		$.get('<?php echo base_url('Pegawai/tampil'); ?>', function(data) {
+	function tampilMahasiswa() {
+		$.get('<?php echo base_url('Mahasiswa/tampil'); ?>', function(data) {
 			MyTable.fnDestroy();
-			$('#data-pegawai').html(data);
+			$('#data-mahasiswa').html(data);
 			refresh();
 		});
 	}
 
-	var id_pegawai;
-	$(document).on("click", ".konfirmasiHapus-pegawai", function() {
-		id_pegawai = $(this).attr("data-id");
+	var id_mahasiswa;
+	$(document).on("click", ".konfirmasiHapus-mahasiswa", function() {
+		id_mahasiswa = $(this).attr("data-id");
 	})
-	$(document).on("click", ".hapus-dataPegawai", function() {
-		var id = id_pegawai;
+	$(document).on("click", ".hapus-dataMahasiswa", function() {
+		var id = id_mahasiswa;
 		
 		$.ajax({
 			method: "POST",
-			url: "<?php echo base_url('Pegawai/delete'); ?>",
+			url: "<?php echo base_url('Mahasiswa/delete'); ?>",
 			data: "id=" +id
 		})
 		.done(function(data) {
 			$('#konfirmasiHapus').modal('hide');
-			tampilPegawai();
+			tampilMahasiswa();
 			$('.msg').html(data);
 			effect_msg();
 		})
 	})
 
-	$(document).on("click", ".update-dataPegawai", function() {
+	$(document).on("click", ".update-dataMahasiswa", function() {
 		var id = $(this).attr("data-id");
 		
 		$.ajax({
 			method: "POST",
-			url: "<?php echo base_url('Pegawai/update'); ?>",
+			url: "<?php echo base_url('Mahasiswa/update'); ?>",
 			data: "id=" +id
 		})
 		.done(function(data) {
 			$('#tempat-modal').html(data);
-			$('#update-pegawai').modal('show');
+			$('#update-mahasiswa').modal('show');
 		})
 	})
 
-	$('#form-tambah-pegawai').submit(function(e) {
+	$('#form-tambah-mahasiswa').submit(function(e) {
 		var data = $(this).serialize();
 
 		$.ajax({
 			method: 'POST',
-			url: '<?php echo base_url('Pegawai/prosesTambah'); ?>',
+			url: '<?php echo base_url('Mahasiswa/prosesTambah'); ?>',
 			data: data
 		})
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			tampilPegawai();
+			tampilMahasiswa();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();
 			} else {
-				document.getElementById("form-tambah-pegawai").reset();
-				$('#tambah-pegawai').modal('hide');
+				document.getElementById("form-tambah-mahasiswa").reset();
+				$('#tambah-mahasiswa').modal('hide');
 				$('.msg').html(out.msg);
 				effect_msg();
 			}
@@ -103,24 +103,24 @@
 		e.preventDefault();
 	});
 
-	$(document).on('submit', '#form-update-pegawai', function(e){
+	$(document).on('submit', '#form-update-mahasiswa', function(e){
 		var data = $(this).serialize();
 
 		$.ajax({
 			method: 'POST',
-			url: '<?php echo base_url('Pegawai/prosesUpdate'); ?>',
+			url: '<?php echo base_url('Mahasiswa/prosesUpdate'); ?>',
 			data: data
 		})
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			tampilPegawai();
+			tampilMahasiswa();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();
 			} else {
-				document.getElementById("form-update-pegawai").reset();
-				$('#update-pegawai').modal('hide');
+				document.getElementById("form-update-mahasiswa").reset();
+				$('#update-mahasiswa').modal('hide');
 				$('.msg').html(out.msg);
 				effect_msg();
 			}
@@ -129,11 +129,11 @@
 		e.preventDefault();
 	});
 
-	$('#tambah-pegawai').on('hidden.bs.modal', function () {
+	$('#tambah-mahasiswa').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
 
-	$('#update-pegawai').on('hidden.bs.modal', function () {
+	$('#update-mahasiswa').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
 
@@ -262,55 +262,55 @@
 	  $('.form-msg').html('');
 	})
 
-	//Posisi
-	function tampilPosisi() {
-		$.get('<?php echo base_url('Posisi/tampil'); ?>', function(data) {
+	//Jurusan
+	function tampilJurusan() {
+		$.get('<?php echo base_url('Jurusan/tampil'); ?>', function(data) {
 			MyTable.fnDestroy();
-			$('#data-posisi').html(data);
+			$('#data-jurusan').html(data);
 			refresh();
 		});
 	}
 
-	var id_posisi;
-	$(document).on("click", ".konfirmasiHapus-posisi", function() {
-		id_posisi = $(this).attr("data-id");
+	var id_jurusan;
+	$(document).on("click", ".konfirmasiHapus-jurusan", function() {
+		id_jurusan = $(this).attr("data-id");
 	})
-	$(document).on("click", ".hapus-dataPosisi", function() {
-		var id = id_posisi;
+	$(document).on("click", ".hapus-dataJurusan", function() {
+		var id = id_jurusan;
 		
 		$.ajax({
 			method: "POST",
-			url: "<?php echo base_url('Posisi/delete'); ?>",
+			url: "<?php echo base_url('Jurusan/delete'); ?>",
 			data: "id=" +id
 		})
 		.done(function(data) {
 			$('#konfirmasiHapus').modal('hide');
-			tampilPosisi();
+			tampilJurusan();
 			$('.msg').html(data);
 			effect_msg();
 		})
 	})
 
-	$(document).on("click", ".update-dataPosisi", function() {
+	$(document).on("click", ".update-dataJurusan", function() {
 		var id = $(this).attr("data-id");
 		
 		$.ajax({
 			method: "POST",
-			url: "<?php echo base_url('Posisi/update'); ?>",
+			url: "<?php echo base_url('Jurusan/update'); ?>",
 			data: "id=" +id
 		})
 		.done(function(data) {
 			$('#tempat-modal').html(data);
-			$('#update-posisi').modal('show');
+			$('#update-jurusan').modal('show');
 		})
 	})
 
-	$(document).on("click", ".detail-dataPosisi", function() {
+	$(document).on("click", ".detail-dataJurusan", function() {
 		var id = $(this).attr("data-id");
 		
 		$.ajax({
 			method: "POST",
-			url: "<?php echo base_url('Posisi/detail'); ?>",
+			url: "<?php echo base_url('Jurusan/detail'); ?>",
 			data: "id=" +id
 		})
 		.done(function(data) {
@@ -323,28 +323,28 @@
 				  "info": true,
 				  "autoWidth": false
 				});
-			$('#detail-posisi').modal('show');
+			$('#detail-jurusan').modal('show');
 		})
 	})
 
-	$('#form-tambah-posisi').submit(function(e) {
+	$('#form-tambah-jurusan').submit(function(e) {
 		var data = $(this).serialize();
 
 		$.ajax({
 			method: 'POST',
-			url: '<?php echo base_url('Posisi/prosesTambah'); ?>',
+			url: '<?php echo base_url('Jurusan/prosesTambah'); ?>',
 			data: data
 		})
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			tampilPosisi();
+			tampilJurusan();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();
 			} else {
-				document.getElementById("form-tambah-posisi").reset();
-				$('#tambah-posisi').modal('hide');
+				document.getElementById("form-tambah-jurusan").reset();
+				$('#tambah-jurusan').modal('hide');
 				$('.msg').html(out.msg);
 				effect_msg();
 			}
@@ -353,24 +353,24 @@
 		e.preventDefault();
 	});
 
-	$(document).on('submit', '#form-update-posisi', function(e){
+	$(document).on('submit', '#form-update-jurusan', function(e){
 		var data = $(this).serialize();
 
 		$.ajax({
 			method: 'POST',
-			url: '<?php echo base_url('Posisi/prosesUpdate'); ?>',
+			url: '<?php echo base_url('Jurusan/prosesUpdate'); ?>',
 			data: data
 		})
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			tampilPosisi();
+			tampilJurusan();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();
 			} else {
-				document.getElementById("form-update-posisi").reset();
-				$('#update-posisi').modal('hide');
+				document.getElementById("form-update-jurusan").reset();
+				$('#update-jurusan').modal('hide');
 				$('.msg').html(out.msg);
 				effect_msg();
 			}
@@ -379,11 +379,11 @@
 		e.preventDefault();
 	});
 
-	$('#tambah-posisi').on('hidden.bs.modal', function () {
+	$('#tambah-jurusan').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
 
-	$('#update-posisi').on('hidden.bs.modal', function () {
+	$('#update-jurusan').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
 </script>

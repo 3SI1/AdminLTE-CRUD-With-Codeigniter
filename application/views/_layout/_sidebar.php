@@ -26,17 +26,17 @@
         </a>
       </li>
       
-      <li <?php if ($page == 'pegawai') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Pegawai'); ?>">
+      <li <?php if ($page == 'Mahasiswa') {echo 'class="active"';} ?>>
+        <a href="<?php echo base_url('Mahasiswa'); ?>">
           <i class="fa fa-user"></i>
-          <span>Data Pegawai</span>
+          <span>Data Mahasiswa</span>
         </a>
       </li>
 
-      <li <?php if ($page == 'posisi') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Posisi'); ?>">
+      <li <?php if ($page == 'Jurusan') {echo 'class="active"';} ?>>
+        <a href="<?php echo base_url('Jurusan'); ?>">
           <i class="fa fa-briefcase"></i>
-          <span>Data Posisi</span>
+          <span>Data Jurusan</span>
         </a>
       </li>
       
